@@ -17,5 +17,18 @@ services:
     volumes:
       - task-data:/var/lib/postgresql/data
 
+  app:
+    build: .
+    container_name: task-api
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - db
+
 volumes:
   task-data:
